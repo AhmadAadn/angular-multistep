@@ -256,73 +256,74 @@ export class AppComponent implements OnInit {
       this.step++;
     }
 
-    }
-
-netxfinal(){
-  if (this.step == 10) {
-    this.q10_step = true;
-    if (this.q10.invalid) {
-      return
-    }
-    this.step++;
   }
-  this.res = [
-    {
-      'title': this.pTitle,
-      'ans': [this.personalDetails.get('name').value, this.personalDetails.get('email').value, this.personalDetails.get('phone').value,]
-    },
-    {
-      'title': this.aTitle,
-      'ans': [this.addressDetails.get('city').value, this.addressDetails.get('address').value, this.addressDetails.get('pincode').value,]
-    },
-    {
-      'title': this.e1Title,
-      'ans': [this.educationalDetails.get('highest').value, this.educationalDetails.get('university').value, this.educationalDetails.get('totalmarks').value,]
-    },
 
-    {
-      'title': this.q1Title,
-      'ans': this.q1.get('ans1').value
-    },
-    {
-      'title': this.q2Title,
-      'ans': this.q2.get('ans2').value
-    },
+  netxfinal() {
+    if (this.step == 10) {
+      this.q10_step = true;
+      if (this.q10.invalid) {
+        return
+      }
+      this.step++;
+    }
+    this.res = [
+      {
+        'title': this.pTitle,
+        'ans': [this.personalDetails.get('name').value, this.personalDetails.get('email').value, this.personalDetails.get('phone').value,]
+      },
+      {
+        'title': this.aTitle,
+        'ans': [this.addressDetails.get('city').value, this.addressDetails.get('address').value, this.addressDetails.get('pincode').value,]
+      },
+      {
+        'title': this.e1Title,
+        'ans': [this.educationalDetails.get('highest').value, this.educationalDetails.get('university').value, this.educationalDetails.get('totalmarks').value,]
+      },
 
-    {
-      'title': this.q3Title,
-      'ans': this.q3.get('ans3').value
-    },
-    {
-      'title': this.q4Title,
-      'ans': this.q4.get('ans4').value
-    },
-    {
-      'title': this.q5Title,
-      'ans': this.q5.get('ans5').value
-    },
-    {
-      'title': this.q6Title,
-      'ans': this.q6.get('ans6').value
-    },
-    {
-      'title': this.q7Title,
-      'ans': this.q7.get('ans7').value
-    },
-    {
-      'title': this.q8Title,
-      'ans': this.q8.get('ans8').value
-    },
-    {
-      'title': this.q9Title,
-      'ans': this.q9.get('ans9').value
-    },
-    {
-      'title': this.q10Title,
-      'ans': this.q10.get('ans10').value
-    }];
+      {
+        'title': this.q1Title,
+        'ans': this.q1.get('ans1').value
+      },
+      {
+        'title': this.q2Title,
+        'ans': this.q2.get('ans2').value
+      },
 
-}
+      {
+        'title': this.q3Title,
+        'ans': this.q3.get('ans3').value
+      },
+      {
+        'title': this.q4Title,
+        'ans': this.q4.get('ans4').value
+      },
+      {
+        'title': this.q5Title,
+        'ans': this.q5.get('ans5').value
+      },
+      {
+        'title': this.q6Title,
+        'ans': this.q6.get('ans6').value
+      },
+      {
+        'title': this.q7Title,
+        'ans': this.q7.get('ans7').value
+      },
+      {
+        'title': this.q8Title,
+        'ans': this.q8.get('ans8').value
+      },
+      {
+        'title': this.q9Title,
+        'ans': this.q9.get('ans9').value
+      },
+      {
+        'title': this.q10Title,
+        'ans': this.q10.get('ans10').value
+      }];
+
+  }
+
   previous() {
     this.step--
     if (this.step == -2) {

@@ -9,9 +9,10 @@
         <li [ngClass]="step>=1 ? 'active' : 'inactive'">Que</li>
       </ul>
 
-      <fieldset  *ngIf="step == -2" >
+      <fieldset *ngIf="step == -2">
         <h2 class="fs-title">Personal Details</h2>
-        <input type="text" formControlName="name"  [ngClass]="{ 'is-invalid': personal_step && personal['name'].errors }" placeholder="Full Name"/>
+        <input type="text" formControlName="name" [ngClass]="{ 'is-invalid': personal_step && personal['name'].errors }"
+               placeholder="Full Name"/>
         <div *ngIf="personal_step && personalDetails.controls['name'].errors">
           <div *ngIf="personal['name'].errors['required']">Name is required</div>
         </div>
@@ -27,26 +28,36 @@
       </fieldset>
     </form>
     <form [formGroup]="addressDetails" id="msform">
-      <fieldset *ngIf="step == -1" >
+      <fieldset *ngIf="step == -1">
         <h2 class="fs-title">Address Details</h2>
         <input type="text" formControlName="city"
                placeholder="city"/>
-        <div *ngIf="addressDetails.controls['city'].invalid && (addressDetails.controls['city'].dirty || addressDetails.controls['city'].touched)" class="alert">
+        <div
+          *ngIf="addressDetails.controls['city'].invalid && (addressDetails.controls['city'].dirty || addressDetails.controls['city'].touched)"
+          class="alert">
           <div *ngIf="addressDetails.controls['city'].errors['required']" style="color: red">
             City is required
-          </div></div>
-        <input type="text" formControlName="address"  placeholder="address"/>
-        <div *ngIf="addressDetails.controls['address'].invalid && (addressDetails.controls['address'].dirty || addressDetails.controls['address'].touched)" class="alert">
+          </div>
+        </div>
+        <input type="text" formControlName="address" placeholder="address"/>
+        <div
+          *ngIf="addressDetails.controls['address'].invalid && (addressDetails.controls['address'].dirty || addressDetails.controls['address'].touched)"
+          class="alert">
           <div *ngIf="addressDetails.controls['address'].errors['required']" style="color: red">
             Address is required
-          </div></div>
-        <input type="text" formControlName="pincode"  placeholder="pincode"/>
-        <div *ngIf="addressDetails.controls['pincode'].invalid && (addressDetails.controls['pincode'].dirty || addressDetails.controls['pincode'].touched)" class="alert">
+          </div>
+        </div>
+        <input type="text" formControlName="pincode" placeholder="pincode"/>
+        <div
+          *ngIf="addressDetails.controls['pincode'].invalid && (addressDetails.controls['pincode'].dirty || addressDetails.controls['pincode'].touched)"
+          class="alert">
           <div *ngIf="addressDetails.controls['pincode'].errors['required']" style="color: red">
             Pincode is required
-          </div></div>
-        <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <input  (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
+          </div>
+        </div>
+        <input (click)="previous()" type="button" name="previous" class="previous action-button-previous"
+               value="Previous"/>
+        <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
       </fieldset>
     </form>
     <form [formGroup]="educationalDetails" id="msform">
@@ -54,22 +65,32 @@
         <h2 class="fs-title">Educational Details</h2>
         <input type="text" formControlName="highest"
                placeholder="highest"/>
-        <div *ngIf="educationalDetails.controls['highest'].invalid && (educationalDetails.controls['highest'].dirty || educationalDetails.controls['highest'].touched)" class="alert">
+        <div
+          *ngIf="educationalDetails.controls['highest'].invalid && (educationalDetails.controls['highest'].dirty || educationalDetails.controls['highest'].touched)"
+          class="alert">
           <div *ngIf="educationalDetails.controls['highest'].errors['required']" style="color: red">
             Highest Qualification is required
-          </div></div>
-        <input type="text" formControlName="university"  placeholder="university"/>
-        <div *ngIf="educationalDetails.controls['university'].invalid && (educationalDetails.controls['university'].dirty || educationalDetails.controls['university'].touched)" class="alert">
+          </div>
+        </div>
+        <input type="text" formControlName="university" placeholder="university"/>
+        <div
+          *ngIf="educationalDetails.controls['university'].invalid && (educationalDetails.controls['university'].dirty || educationalDetails.controls['university'].touched)"
+          class="alert">
           <div *ngIf="educationalDetails.controls['university'].errors['required']" style="color: red">
             University is required
-          </div></div>
-        <input type="text" formControlName="totalmarks"  placeholder="totalmarks"/>
-        <div *ngIf="educationalDetails.controls['totalmarks'].invalid && (educationalDetails.controls['totalmarks'].dirty || educationalDetails.controls['totalmarks'].touched)" class="alert">
+          </div>
+        </div>
+        <input type="text" formControlName="totalmarks" placeholder="totalmarks"/>
+        <div
+          *ngIf="educationalDetails.controls['totalmarks'].invalid && (educationalDetails.controls['totalmarks'].dirty || educationalDetails.controls['totalmarks'].touched)"
+          class="alert">
           <div *ngIf="educationalDetails.controls['totalmarks'].errors['required']" style="color: red">
             Total Marks is required
-          </div></div>
-        <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <input  (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
+          </div>
+        </div>
+        <input (click)="previous()" type="button" name="previous" class="previous action-button-previous"
+               value="Previous"/>
+        <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
       </fieldset>
     </form>
     <form [formGroup]="q1" id="msform">
@@ -77,20 +98,23 @@
         <h2 class="fs-title"> {{q1Title}}</h2>
 
         <input type="text" formControlName="ans1" placeholder="Ans"/>
-        <div *ngIf="q1.controls['ans1'].invalid && (q1.controls['ans1'].dirty || q1.controls['ans1'].touched)" class="alert">
+        <div *ngIf="q1.controls['ans1'].invalid && (q1.controls['ans1'].dirty || q1.controls['ans1'].touched)"
+             class="alert">
           <div *ngIf="q1.controls['ans1'].errors['required']" style="color: red">
             Total Marks is required
           </div>
         </div>
-        <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+        <input (click)="previous()" type="button" name="previous" class="previous action-button-previous"
+               value="Previous"/>
         <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
       </fieldset>
     </form>
     <form [formGroup]="q2" id="msform">
       <fieldset *ngIf="step == 2">
         <h2 class="fs-title">{{q2Title}}</h2>
-        <input type="number" formControlName="ans2" placeholder="Ans" />
-        <div *ngIf="q2.controls['ans2'].invalid && (q2.controls['ans2'].dirty || q2.controls['ans2'].touched)" class="alert">
+        <input type="number" formControlName="ans2" placeholder="Ans"/>
+        <div *ngIf="q2.controls['ans2'].invalid && (q2.controls['ans2'].dirty || q2.controls['ans2'].touched)"
+             class="alert">
           <div *ngIf="q2.controls['ans2'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -107,7 +131,8 @@
       <fieldset *ngIf="step == 3">
         <h2 class="fs-title">{{q3Title}}</h2>
         <input type="text" formControlName="ans3" placeholder="Ans"/>
-        <div *ngIf="q3.controls['ans3'].invalid && (q3.controls['ans3'].dirty || q3.controls['ans3'].touched)" class="alert">
+        <div *ngIf="q3.controls['ans3'].invalid && (q3.controls['ans3'].dirty || q3.controls['ans3'].touched)"
+             class="alert">
           <div *ngIf="q3.controls['ans3'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -122,7 +147,8 @@
       <fieldset *ngIf="step == 4">
         <h2 class="fs-title">{{q4Title}}</h2>
         <input type="text" formControlName="ans4" placeholder="Ans"/>
-        <div *ngIf="q4.controls['ans4'].invalid && (q4.controls['ans4'].dirty || q1.controls['ans4'].touched)" class="alert">
+        <div *ngIf="q4.controls['ans4'].invalid && (q4.controls['ans4'].dirty || q1.controls['ans4'].touched)"
+             class="alert">
           <div *ngIf="q4.controls['ans4'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -137,7 +163,8 @@
       <fieldset *ngIf="step == 5">
         <h2 class="fs-title">{{q5Title}}</h2>
         <input type="text" formControlName="ans5" placeholder="Ans"/>
-        <div *ngIf="q5.controls['ans5'].invalid && (q1.controls['ans5'].dirty || q5.controls['ans5'].touched)" class="alert">
+        <div *ngIf="q5.controls['ans5'].invalid && (q1.controls['ans5'].dirty || q5.controls['ans5'].touched)"
+             class="alert">
           <div *ngIf="q1.controls['ans5'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -152,7 +179,8 @@
       <fieldset *ngIf="step == 6">
         <h2 class="fs-title">{{q6Title}}</h2>
         <input type="text" formControlName="ans6" placeholder="Ans"/>
-        <div *ngIf="q6.controls['ans6'].invalid && (q6.controls['ans6'].dirty || q6.controls['ans6'].touched)" class="alert">
+        <div *ngIf="q6.controls['ans6'].invalid && (q6.controls['ans6'].dirty || q6.controls['ans6'].touched)"
+             class="alert">
           <div *ngIf="q6.controls['ans6'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -167,7 +195,8 @@
       <fieldset *ngIf="step == 7">
         <h2 class="fs-title">{{q7Title}}</h2>
         <input type="text" formControlName="ans7" placeholder="Ans"/>
-        <div *ngIf="q7.controls['ans7'].invalid && (q7.controls['ans7'].dirty || q7.controls['ans7'].touched)" class="alert">
+        <div *ngIf="q7.controls['ans7'].invalid && (q7.controls['ans7'].dirty || q7.controls['ans7'].touched)"
+             class="alert">
           <div *ngIf="q7.controls['ans7'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -182,7 +211,8 @@
       <fieldset *ngIf="step == 8">
         <h2 class="fs-title">{{q8Title}}</h2>
         <input type="text" formControlName="ans8" placeholder="Ans"/>
-        <div *ngIf="q8.controls['ans8'].invalid && (q1.controls['ans8'].dirty || q8.controls['ans8'].touched)" class="alert">
+        <div *ngIf="q8.controls['ans8'].invalid && (q1.controls['ans8'].dirty || q8.controls['ans8'].touched)"
+             class="alert">
           <div *ngIf="q8.controls['ans8'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -197,7 +227,8 @@
       <fieldset *ngIf="step == 9">
         <h2 class="fs-title">{{q9Title}}</h2>
         <input type="text" formControlName="ans9" placeholder="Ans"/>
-        <div *ngIf="q9.controls['ans9'].invalid && (q9.controls['ans9'].dirty || q9.controls['ans9'].touched)" class="alert">
+        <div *ngIf="q9.controls['ans9'].invalid && (q9.controls['ans9'].dirty || q9.controls['ans9'].touched)"
+             class="alert">
           <div *ngIf="q9.controls['ans9'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -212,7 +243,8 @@
       <fieldset *ngIf="step == 10">
         <h2 class="fs-title">{{q10Title}}</h2>
         <input type="text" formControlName="ans10" placeholder="Ans"/>
-        <div *ngIf="q10.controls['ans10'].invalid && (q10.controls['ans10'].dirty || q10.controls['ans10'].touched)" class="alert">
+        <div *ngIf="q10.controls['ans10'].invalid && (q10.controls['ans10'].dirty || q10.controls['ans10'].touched)"
+             class="alert">
           <div *ngIf="q10.controls['ans10'].errors['required']" style="color: red">
             Please enter Ans
           </div>
@@ -223,15 +255,15 @@
       </fieldset>
     </form>
     <form id="msform">
-    <fieldset id="msform" *ngIf="step == 11">
-      <div  *ngFor="let re of res ; let i = index">
-        <h2 class="fs-title">{{re.title}}</h2>
-        <label type="text">{{re.ans}}</label>
-      </div>
-      <input (click)="previous()" type="button" name="previous" class="previous action-button-previous"
-             value="Previous"/>
-      <input (click)="submit()" type="submit" name="submit" class="submit action-button" value="Submit"/>
-    </fieldset>
+      <fieldset id="msform" *ngIf="step == 11">
+        <div *ngFor="let re of res ; let i = index">
+          <h2 class="fs-title">{{re.title}}</h2>
+          <label type="text">{{re.ans}}</label>
+        </div>
+        <input (click)="previous()" type="button" name="previous" class="previous action-button-previous"
+               value="Previous"/>
+        <input (click)="submit()" type="submit" name="submit" class="submit action-button" value="Submit"/>
+      </fieldset>
     </form>
   </div>
 </div>
