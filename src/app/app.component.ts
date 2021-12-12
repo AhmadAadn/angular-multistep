@@ -19,6 +19,9 @@ export class AppComponent implements OnInit {
   q8!: FormGroup;
   q9!: FormGroup;
   q10!: FormGroup;
+  personalDetails!: FormGroup;
+  addressDetails!: FormGroup;
+  educationalDetails!: FormGroup;
 
   q1_step = false;
   q2_step = false;
@@ -30,6 +33,12 @@ export class AppComponent implements OnInit {
   q8_step = false;
   q9_step = false;
   q10_step = false;
+  personal_step = false;
+  address_step = false;
+  education_step = false;
+  pTitle = 'Personal Details';
+  aTitle = 'Address Details';
+  e1Title = 'Educational Details  ';
 
   q1Title = 'HOW MUCH MONEY DO YOU NEED?';
   q2Title = 'How Old Are You?';
@@ -43,7 +52,7 @@ export class AppComponent implements OnInit {
   q10Title = 'Your repayments should never be more than 30-50% of your monthly income do you know that?';
 
   res;
-  step = 1;
+  step = -2;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -85,7 +94,35 @@ export class AppComponent implements OnInit {
     this.q10 = this.formBuilder.group({
       ans10: ['', Validators.required],
     });
+    this.educationalDetails = this.formBuilder.group({
+      highest: ['', Validators.required],
+      university: ['', Validators.required],
+      totalmarks: ['', Validators.required]
+    });
+    this.personalDetails = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required]
+    });
+    this.addressDetails = this.formBuilder.group({
+      city: ['', Validators.required],
+      address: ['', Validators.required],
+      pincode: ['', Validators.required]
+    });
 
+
+  }
+
+  get personal() {
+    return this.personalDetails.controls;
+  }
+
+  get education() {
+    return this.educationalDetails.controls;
+  }
+
+  get address() {
+    return this.addressDetails.controls;
   }
 
   get gq1() {
@@ -130,7 +167,27 @@ export class AppComponent implements OnInit {
   }
 
   next() {
-
+    if (this.step == -2) {
+      this.personal_step = true;
+      if (this.personalDetails.invalid) {
+        return
+      }
+      this.step++
+    }
+    if (this.step == -1) {
+      this.address_step = true;
+      if (this.addressDetails.invalid) {
+        return
+      }
+      this.step++;
+    }
+    if (this.step == 0) {
+      this.education_step = true;
+      if (this.educationalDetails.invalid) {
+        return
+      }
+      this.step++;
+    }
     if (this.step == 1) {
       this.q1_step = true;
       if (this.q1.invalid) {
@@ -198,60 +255,85 @@ export class AppComponent implements OnInit {
       }
       this.step++;
     }
-    if (this.step == 10) {
-      this.q10_step = true;
-      if (this.q10.invalid) {
-        return
-      }
-      this.res = [
-        {
-          'title': this.q1Title,
-          'ans': this.q1.get('ans1').value
-        },
-        {
-          'title': this.q2Title,
-          'ans': this.q2.get('ans2').value
-        },
 
-        {
-          'title': this.q3Title,
-          'ans': this.q3.get('ans3').value
-        },
-        {
-          'title': this.q4Title,
-          'ans': this.q4.get('ans4').value
-        },
-        {
-          'title': this.q5Title,
-          'ans': this.q5.get('ans5').value
-        },
-        {
-          'title': this.q6Title,
-          'ans': this.q6.get('ans6').value
-        },
-        {
-          'title': this.q7Title,
-          'ans': this.q7.get('ans7').value
-        },
-        {
-          'title': this.q8Title,
-          'ans': this.q8.get('ans8').value
-        },
-        {
-          'title': this.q9Title,
-          'ans': this.q9.get('ans9').value
-        },
-        {
-          'title': this.q10Title,
-          'ans': this.q10.get('ans10').value
-        }];
-      this.step++;
     }
+
+netxfinal(){
+  if (this.step == 10) {
+    this.q10_step = true;
+    if (this.q10.invalid) {
+      return
+    }
+    this.step++;
   }
+  this.res = [
+    {
+      'title': this.pTitle,
+      'ans': [this.personalDetails.get('name').value, this.personalDetails.get('email').value, this.personalDetails.get('phone').value,]
+    },
+    {
+      'title': this.aTitle,
+      'ans': [this.addressDetails.get('city').value, this.addressDetails.get('address').value, this.addressDetails.get('pincode').value,]
+    },
+    {
+      'title': this.e1Title,
+      'ans': [this.educationalDetails.get('highest').value, this.educationalDetails.get('university').value, this.educationalDetails.get('totalmarks').value,]
+    },
 
+    {
+      'title': this.q1Title,
+      'ans': this.q1.get('ans1').value
+    },
+    {
+      'title': this.q2Title,
+      'ans': this.q2.get('ans2').value
+    },
+
+    {
+      'title': this.q3Title,
+      'ans': this.q3.get('ans3').value
+    },
+    {
+      'title': this.q4Title,
+      'ans': this.q4.get('ans4').value
+    },
+    {
+      'title': this.q5Title,
+      'ans': this.q5.get('ans5').value
+    },
+    {
+      'title': this.q6Title,
+      'ans': this.q6.get('ans6').value
+    },
+    {
+      'title': this.q7Title,
+      'ans': this.q7.get('ans7').value
+    },
+    {
+      'title': this.q8Title,
+      'ans': this.q8.get('ans8').value
+    },
+    {
+      'title': this.q9Title,
+      'ans': this.q9.get('ans9').value
+    },
+    {
+      'title': this.q10Title,
+      'ans': this.q10.get('ans10').value
+    }];
+
+}
   previous() {
-
     this.step--
+    if (this.step == -2) {
+      this.personal_step = false;
+    }
+    if (this.step == -1) {
+      this.address_step = false;
+    }
+    if (this.step == 0) {
+      this.education_step = false;
+    }
     if (this.step == 1) {
       this.q1_step = false;
     }
@@ -286,11 +368,16 @@ export class AppComponent implements OnInit {
   }
 
   submit() {
-
     return this.res;
   }
 
-  SelectedType(event, id: number) {
+  SelectedType(id: number): void {
+    if (id <= 18) {
+      this.step++;
+    }
+  }
+
+  onChange(id: number): void {
     if (id <= 18) {
       this.step++;
     }
