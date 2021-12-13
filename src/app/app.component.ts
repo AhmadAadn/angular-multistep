@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   personal_step = false;
   address_step = false;
   education_step = false;
+  intro_step = false;
   pTitle = 'Personal Details';
   aTitle = 'Address Details';
   e1Title = 'Educational Details  ';
@@ -52,7 +53,7 @@ export class AppComponent implements OnInit {
   q10Title = 'Your repayments should never be more than 30-50% of your monthly income do you know that?';
 
   res;
-  step = -2;
+  step = -3;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -165,29 +166,31 @@ export class AppComponent implements OnInit {
   get gq10() {
     return this.q10.controls;
   }
-
+ 
   next() {
-    if (this.step == -2) {
+    this.step++
+    if (this.step == -3) {
       this.personal_step = true;
       if (this.personalDetails.invalid) {
         return
       }
       this.step++
     }
-    if (this.step == -1) {
+    if (this.step == -2) {
       this.address_step = true;
       if (this.addressDetails.invalid) {
         return
       }
       this.step++;
     }
-    if (this.step == 0) {
+    if (this.step == -1) {
       this.education_step = true;
       if (this.educationalDetails.invalid) {
         return
       }
       this.step++;
     }
+
     if (this.step == 1) {
       this.q1_step = true;
       if (this.q1.invalid) {
@@ -326,13 +329,13 @@ export class AppComponent implements OnInit {
 
   previous() {
     this.step--
-    if (this.step == -2) {
+    if (this.step == -3) {
       this.personal_step = false;
     }
-    if (this.step == -1) {
+    if (this.step == -2) {
       this.address_step = false;
     }
-    if (this.step == 0) {
+    if (this.step == -1) {
       this.education_step = false;
     }
     if (this.step == 1) {

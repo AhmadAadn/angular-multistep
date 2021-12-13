@@ -3,13 +3,14 @@
 
     <form [formGroup]="personalDetails" id="msform">
       <ul id="progressbar">
-        <li [ngClass]="step>=-2 ? 'active ' : 'inactive'">Personal Details</li>
-        <li [ngClass]="step>=-1 ? 'active' : 'inactive'">Social Profiles</li>
-        <li [ngClass]="step>=0 ? 'active' : 'inactive'">Account Setup</li>
+        <li [ngClass]="step>=-3 ? 'active ' : 'inactive'">Personal Details</li>
+        <li [ngClass]="step>=-2 ? 'active' : 'inactive'">Social Profiles</li>
+        <li [ngClass]="step>=-1 ? 'active' : 'inactive'">Account Setup</li>
+        <li [ngClass]="step>=0 ? 'active' : 'inactive'">intro</li>
         <li [ngClass]="step>=1 ? 'active' : 'inactive'">Que</li>
       </ul>
 
-      <fieldset *ngIf="step == -2">
+      <fieldset *ngIf="step == -3">
         <h2 class="fs-title">Personal Details</h2>
         <input type="text" formControlName="name" [ngClass]="{ 'is-invalid': personal_step && personal['name'].errors }"
                placeholder="Full Name"/>
@@ -28,7 +29,7 @@
       </fieldset>
     </form>
     <form [formGroup]="addressDetails" id="msform">
-      <fieldset *ngIf="step == -1">
+      <fieldset *ngIf="step == -2">
         <h2 class="fs-title">Address Details</h2>
         <input type="text" formControlName="city"
                placeholder="city"/>
@@ -61,7 +62,7 @@
       </fieldset>
     </form>
     <form [formGroup]="educationalDetails" id="msform">
-      <fieldset *ngIf="step == 0">
+      <fieldset *ngIf="step == -1">
         <h2 class="fs-title">Educational Details</h2>
         <input type="text" formControlName="highest"
                placeholder="highest"/>
@@ -93,6 +94,17 @@
         <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
       </fieldset>
     </form>
+
+    <form id="msform">
+      <fieldset id="msform" *ngIf="step == 0">
+        <h2 class="fs-title">Now we want to ask a few questions that will help us --)</h2>
+        <input (click)="previous()" type="button" name="previous" class="previous action-button-previous"
+               value="Previous"/>
+        <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
+      </fieldset>
+    </form>
+
+
     <form [formGroup]="q1" id="msform">
       <fieldset *ngIf="step == 1">
         <h2 class="fs-title"> {{q1Title}}</h2>
